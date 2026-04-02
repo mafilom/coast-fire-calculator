@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Coast FIRE Calculator</title>
+
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💬</text></svg>">
+
+<style>
+    body {
+        margin: 0;
+        font-family: 'Segoe UI', sans-serif;
+        background: #e0e5ec;
+        color: #333;
+        text-align: center;
+    }
+
+    header {
+        padding: 20px;
+        font-size: 22px;
+        font-weight: 600;
+    }
+
+    .container {
+        padding: 15px;
+    }
+
+    .card {
+        max-width: 420px;
+        margin: auto;
+        padding: 25px;
+        border-radius: 20px;
+        background: #e0e5ec;
+        box-shadow: 8px 8px 16px #b8bec7,
+                    -8px -8px 16px #ffffff;
+    }
+
+    input {
+        width: 100%;
+        padding: 12px;
+        margin-top: 12px;
+        border-radius: 10px;
+        border: none;
+        font-size: 16px;
+        background: #e0e5ec;
+        box-shadow: inset 4px 4px 8px #b8bec7,
+                    inset -4px -4px 8px #ffffff;
+    }
+
+    button {
+        width: 100%;
+        padding: 12px;
+        margin-top: 12px;
+        border-radius: 10px;
+        border: none;
+        cursor: pointer;
+        font-size: 16px;
+        background: #e0e5ec;
+        box-shadow: 4px 4px 8px #b8bec7,
+                    -4px -4px 8px #ffffff;
+    }
+
+    button:active {
+        box-shadow: inset 4px 4px 8px #b8bec7,
+                    inset -4px -4px 8px #ffffff;
+    }
+
+    .result {
+        margin-top: 15px;
+        font-weight: bold;
+    }
+
+    .cta {
+        margin: 25px 0;
+    }
+
+    .cta a {
+        display: inline-block;
+        padding: 14px 20px;
+        border-radius: 12px;
+        text-decoration: none;
+        color: #fff;
+        background: #ff4d6d;
+        font-weight: bold;
+        animation: heartbeat 1.5s infinite;
+    }
+
+    @keyframes heartbeat {
+        0% { transform: scale(1); }
+        25% { transform: scale(1.05); }
+        50% { transform: scale(1); }
+        75% { transform: scale(1.08); }
+        100% { transform: scale(1); }
+    }
+
+    .content {
+        max-width: 800px;
+        margin: auto;
+        text-align: left;
+        padding: 15px;
+        line-height: 1.7;
+    }
+
+    .features {
+        max-width: 650px;
+        margin: 20px auto;
+        text-align: left;
+    }
+
+    .features ul {
+        padding-left: 20px;
+    }
+
+    @media (max-width: 480px) {
+        header {
+            font-size: 18px;
+        }
+    }
+</style>
+</head>
+
+<body>
+
+<header>Coast FIRE Calculator</header>
+
+<div class="container">
+
+    <!-- TOOL -->
+    <div class="card">
+        <input type="number" id="currentSavings" placeholder="Current Savings ($)">
+        <input type="number" id="monthlyContribution" placeholder="Monthly Contribution ($)">
+        <input type="number" id="annualReturn" placeholder="Expected Annual Return (%)">
+        <input type="number" id="years" placeholder="Years Until Retirement">
+        <button onclick="calculateCoastFire()">Calculate</button>
+        <div class="result" id="result"></div>
+    </div>
+
+    <!-- CTA -->
+    <div class="cta">
+        <a href="https://coastfirecalculator.us/" target="_blank">
+            ❤️ Explore Free Premium Version
+        </a>
+    </div>
+
+    <!-- SEO CONTENT -->
+    <div class="content">
+        <h2>Plan Your Financial Freedom with a Coast FIRE Calculator</h2>
+        <p>
+            The Coast FIRE (Financial Independence, Retire Early) strategy is a powerful approach to long-term financial planning. It allows you to reach a point where your current investments can grow on their own to fund your retirement—without needing additional contributions. This Coast FIRE calculator helps you determine how your savings will grow over time and whether you're on track to achieve financial independence.
+        </p>
+
+        <p>
+            Instead of guessing or relying on complex spreadsheets, this tool simplifies the process by instantly calculating your future investment value based on your current savings, monthly contributions, expected annual return, and time horizon. Whether you're just starting your financial journey or optimizing an existing plan, this calculator provides clarity and direction.
+        </p>
+
+        <p>
+            Coast FIRE is ideal for individuals who want flexibility in their careers, reduced financial stress, and the ability to "coast" toward retirement once a certain savings milestone is reached. By understanding your numbers today, you can make smarter financial decisions for tomorrow.
+        </p>
+
+        <h3>How to Use</h3>
+        <ol>
+            <li>Enter your current savings amount.</li>
+            <li>Input your monthly contribution.</li>
+            <li>Provide your expected annual return rate.</li>
+            <li>Enter the number of years until retirement.</li>
+            <li>Click "Calculate" to see your future value.</li>
+        </ol>
+    </div>
+
+    <!-- FEATURES -->
+    <div class="features">
+        <h3>Key Features</h3>
+        <ul>
+            <li>📈 Accurate future investment growth calculation</li>
+            <li>⚡ Instant results with simple inputs</li>
+            <li>📱 Fully responsive across all devices</li>
+            <li>🔒 No data tracking or storage</li>
+            <li>🎨 Elegant Neumorphism (Soft UI) design</li>
+            <li>🚀 Fast, lightweight, and easy to use</li>
+        </ul>
+    </div>
+
+</div>
+
+<script>
+function calculateCoastFire() {
+    const currentSavings = parseFloat(document.getElementById("currentSavings").value);
+    const monthlyContribution = parseFloat(document.getElementById("monthlyContribution").value);
+    const annualReturn = parseFloat(document.getElementById("annualReturn").value) / 100;
+    const years = parseFloat(document.getElementById("years").value);
+
+    const result = document.getElementById("result");
+
+    if (!currentSavings || !annualReturn || !years) {
+        result.innerText = "Please fill all required fields correctly.";
+        return;
+    }
+
+    const months = years * 12;
+    const monthlyRate = annualReturn / 12;
+
+    let futureValue = currentSavings * Math.pow(1 + annualReturn, years);
+
+    if (monthlyContribution) {
+        futureValue += monthlyContribution * ((Math.pow(1 + monthlyRate, months) - 1) / monthlyRate);
+    }
+
+    result.innerText = "Estimated Future Value: $" + futureValue.toFixed(2);
+}
+</script>
+
+</body>
+</html>
